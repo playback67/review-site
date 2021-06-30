@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Июн 30 2021 г., 14:25
+-- Время создания: Июн 30 2021 г., 18:07
 -- Версия сервера: 10.3.13-MariaDB
 -- Версия PHP: 7.1.22
 
@@ -129,6 +129,17 @@ ALTER TABLE `companies-reviews`
 --
 ALTER TABLE `reviews`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- Ограничения внешнего ключа сохраненных таблиц
+--
+
+--
+-- Ограничения внешнего ключа таблицы `companies-reviews`
+--
+ALTER TABLE `companies-reviews`
+  ADD CONSTRAINT `companies-reviews_ibfk_1` FOREIGN KEY (`Review_ID`) REFERENCES `reviews` (`ID`) ON DELETE CASCADE,
+  ADD CONSTRAINT `companies-reviews_ibfk_2` FOREIGN KEY (`Company_ID`) REFERENCES `companies` (`ID`) ON DELETE CASCADE;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
